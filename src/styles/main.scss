@@ -1,3 +1,35 @@
-body {
+.page {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100px;
+}
+
+.page__content {
   margin: 0;
+}
+
+.antisnake {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(3rem, 1fr));
+
+  @media (max-width: 899px) {
+    grid-template-columns: repeat(2, minmax(3rem, 1fr));
+  }
+
+  @media (max-width: 599px) {
+    grid-template-columns: minmax(3rem, 1fr);
+  }
+
+  &__block {
+    color: #ffff;
+    line-height: 3rem;
+    text-align: center;
+    height: 3rem;
+  }
+
+  @for $i from 1 through 6 {
+    $red-index: 100% - 20% * ($i - 1);
+    &__block--#{$i} {
+      background-color: rgb($red-index,0,0);
+    }
+  }
 }
